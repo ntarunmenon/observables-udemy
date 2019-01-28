@@ -15,6 +15,7 @@ import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {RouterModule} from '@angular/router';
 import {routerConfig} from "./router.config";
+import { CoursesListComponent } from './courses-list/courses-list.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {routerConfig} from "./router.config";
     CourseDetailComponent,
     EventBusExperimentsComponent,
     LessonsCounterComponent,
-    LessonsListComponent
+    LessonsListComponent,
+    CoursesListComponent
   ],
   imports: [
     BrowserModule,
