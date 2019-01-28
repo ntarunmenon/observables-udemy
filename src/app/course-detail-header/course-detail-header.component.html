@@ -1,0 +1,6 @@
+<h2>{{course?.description}}</h2>
+
+<h5>Total lessons: {{lessons?.length}}</h5>
+
+
+<app-newsletter [firstName]="firstName" (subscribe)="onSubscribe($event)"></app-newsletter>

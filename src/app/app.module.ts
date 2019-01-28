@@ -16,6 +16,10 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {RouterModule} from '@angular/router';
 import {routerConfig} from "./router.config";
 import { CoursesListComponent } from './courses-list/courses-list.component';
+import { CourseDetailHeaderComponent } from './course-detail-header/course-detail-header.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
+import { LoginComponent } from './login/login.component';
+import { TopMenuComponent } from './top-menu/top-menu.component';
 
 
 @NgModule({
@@ -27,7 +31,11 @@ import { CoursesListComponent } from './courses-list/courses-list.component';
     EventBusExperimentsComponent,
     LessonsCounterComponent,
     LessonsListComponent,
-    CoursesListComponent
+    CoursesListComponent,
+    CourseDetailHeaderComponent,
+    NewsletterComponent,
+    LoginComponent,
+    TopMenuComponent
   ],
   imports: [
     BrowserModule,

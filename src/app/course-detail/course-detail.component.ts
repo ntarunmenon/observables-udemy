@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { map } from 'rxjs/operators';
 import { CoursesService } from '../services/courses.service';
+import { NewsletterService } from '../services/newsletter.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -15,7 +16,9 @@ export class CourseDetailComponent implements OnInit {
 
   course:Course;
   lessons:Lesson[];
-  constructor(private route: ActivatedRoute, private coursesService: CoursesService) {
+  constructor(private route: ActivatedRoute, 
+    private coursesService: CoursesService,
+    private newsLetterService:NewsletterService) {
     route.params
       .subscribe(params => {
         const courseUrl = params['id'];
@@ -30,6 +33,14 @@ export class CourseDetailComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  onSubscribe(email:string) {
+    this.newsLetterService.subscribeToNewsletter(email)
+      .subscribe(() => {
+        alert('Subscription Succesfull');
+      }),
+      console.error;
   }
 
 }
