@@ -21,6 +21,8 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
 import { LoginComponent } from './login/login.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AllLessonsComponent } from './all-lessons/all-lessons.component';
+import { CourseComponent } from './course/course.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { HttpClientModule } from '@angular/common/http';
     CourseDetailHeaderComponent,
     NewsletterComponent,
     LoginComponent,
-    TopMenuComponent
+    TopMenuComponent,
+    AllLessonsComponent,
+    CourseComponent
   ],
   imports: [
     BrowserModule,

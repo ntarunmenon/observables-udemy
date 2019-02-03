@@ -9,12 +9,14 @@ import {Observer} from 'rxjs';
     templateUrl: './lessons-list.component.html',
     styleUrls: ['./lessons-list.component.css']
 })
-export class LessonsListComponent {
+export class LessonsListComponent implements OnInit {
+    
 
     @Input()
     lessons: Lesson[];
 
-    
+    ngOnInit(): void {
+    }
 
 }
 
