@@ -20,6 +20,7 @@ import { CourseDetailHeaderComponent } from './course-detail-header/course-detai
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { LoginComponent } from './login/login.component';
 import { TopMenuComponent } from './top-menu/top-menu.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
     RouterModule.forRoot(routerConfig),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

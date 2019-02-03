@@ -3,9 +3,11 @@ import { Course } from '../shared/model/course';
 import { Lesson } from '../shared/model/lesson';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { CoursesService } from '../services/courses.service';
 import { NewsletterService } from '../services/newsletter.service';
+import { UserService } from '../services/user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-course-detail',
@@ -14,33 +16,23 @@ import { NewsletterService } from '../services/newsletter.service';
 })
 export class CourseDetailComponent implements OnInit {
 
-  course:Course;
-  lessons:Lesson[];
+  course$:Observable<Course>;
+  lessons$:Observable<Lesson[]>;
   constructor(private route: ActivatedRoute, 
     private coursesService: CoursesService,
-    private newsLetterService:NewsletterService) {
-    route.params
-      .subscribe(params => {
-        const courseUrl = params['id'];
-
-      this.coursesService.findCourseByUrl(courseUrl)
-          .subscribe(course => {
-            this.course = course;
-            this.coursesService.findLessonsForCourse(this.course.id)
-            .subscribe(lessons => this.lessons = lessons);
-          });
-      });
+    private newsLetterService:NewsletterService,
+    private userService:UserService) {
+  
   }
 
   ngOnInit() {
-  }
+    this.course$ = this.route.params
+            .pipe(
+              switchMap(params => this.coursesService.findCourseByUrl(params['id']))
+            );
 
-  onSubscribe(email:string) {
-    this.newsLetterService.subscribeToNewsletter(email)
-      .subscribe(() => {
-        alert('Subscription Succesfull');
-      }),
-      console.error;
+    this.lessons$ = this.course$.pipe(
+      switchMap(course => this.coursesService.findLessonsForCourse(course.id))
+    );
   }
-
 }
