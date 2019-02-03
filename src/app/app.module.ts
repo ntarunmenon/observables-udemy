@@ -25,6 +25,7 @@ import { AllLessonsComponent } from './all-lessons/all-lessons.component';
 import { CourseComponent } from './course/course.component';
 import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 import { SafeUrlPipe } from './safe-url.pipe';
+import { MessagesComponent } from './messages/messages.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { SafeUrlPipe } from './safe-url.pipe';
     AllLessonsComponent,
     CourseComponent,
     LessonDetailComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

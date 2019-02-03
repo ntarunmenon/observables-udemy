@@ -25,5 +25,7 @@ export class LessonsListComponent implements OnInit {
         this.selected.next(lesson);
     }
 
+  
+
 }
 
