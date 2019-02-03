@@ -23,6 +23,8 @@ import { TopMenuComponent } from './top-menu/top-menu.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AllLessonsComponent } from './all-lessons/all-lessons.component';
 import { CourseComponent } from './course/course.component';
+import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
+import { SafeUrlPipe } from './safe-url.pipe';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { CourseComponent } from './course/course.component';
     LoginComponent,
     TopMenuComponent,
     AllLessonsComponent,
-    CourseComponent
+    CourseComponent,
+    LessonDetailComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
