@@ -15,24 +15,11 @@ import { Observable } from 'rxjs';
   styleUrls: ['./course-detail.component.css']
 })
 export class CourseDetailComponent implements OnInit {
+ 
 
-  course$:Observable<Course>;
-  lessons$:Observable<Lesson[]>;
-  constructor(private route: ActivatedRoute, 
-    private coursesService: CoursesService,
-    private newsLetterService:NewsletterService,
-    private userService:UserService) {
-  
-  }
+  constructor(private route: ActivatedRoute) {}
 
-  ngOnInit() {
-    this.course$ = this.route.params
-            .pipe(
-              switchMap(params => this.coursesService.findCourseByUrl(params['id']))
-            );
-
-    this.lessons$ = this.course$.pipe(
-      switchMap(course => this.coursesService.findLessonsForCourse(course.id))
-    );
+  ngOnInit(): void {
+   this.route
   }
 }
