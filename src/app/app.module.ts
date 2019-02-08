@@ -54,7 +54,7 @@ import { MessagesComponent } from './messages/messages.component';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    RouterModule.forRoot(routerConfig),
+    RouterModule.forRoot(routerConfig,{ enableTracing: true }),
     HttpClientModule
   ],
   providers: [],

@@ -16,10 +16,15 @@ import { Observable } from 'rxjs';
 })
 export class CourseDetailComponent implements OnInit {
  
+  course$: Observable<Course>;
+  lessons$:Observable<Lesson[]>;
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-   this.route
+    console.log('inside here');
+    this.course$ = this.route.data.pipe(map(data => data['detail'][0]));
+
+    this.lessons$ = this.route.data.pipe(map(data => data['detail'][1]));
   }
 }

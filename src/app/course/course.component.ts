@@ -29,6 +29,7 @@ export class CourseComponent implements OnInit,OnDestroy {
     private messageService:MessagesService) { }
 
   ngOnInit() {
+    console.log('inside ngOnInit')
     this.course$ = this.coursesService.findCourseById(this.id).
     pipe(
       filter(data => data != null)

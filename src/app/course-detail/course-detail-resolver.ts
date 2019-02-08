@@ -4,23 +4,28 @@ import { Lesson } from "../shared/model/lesson";
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import { CoursesService } from "../services/courses.service";
-import { switchMap, map } from "rxjs/operators";
+import { switchMap, map, tap } from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
-  })
-export class CourseDetailResover implements Resolve<[Course,(Lesson[])]>  {
+})
+export class CourseDetailResover implements Resolve<Observable<[Course, (Lesson[])]>>  {
 
-    constructor(private coursesService:CoursesService){}
+    constructor(private coursesService: CoursesService) { }
 
-    resolve(route: ActivatedRouteSnapshot, 
-        state: RouterStateSnapshot):Observable<[Course,(Lesson[])]> {
-        return this.coursesService.findCourseByUrl(route.params['id'])
+    resolve(route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): Observable<[Course, (Lesson[])]> {
+            return this.coursesService.findCourseByUrl(route.params['id'])
             .pipe(
-            switchMap(
-             course => this.coursesService.findLessonsForCourse(course.id)
-             .pipe(map((course,lessons) => [course,lessons]))
-            )
+                tap(data => console.log(data)),
+                switchMap(
+                    course => this.coursesService.findLessonsForCourse(course.id)
+                        .pipe(
+                             tap(data => console.log(data)),
+                            map<Lesson[], [Course, Lesson[]]>(lessons => [course, lessons]),
+                            tap(data => console.log(data))
+                        )
+                )
             );
     }
 }
