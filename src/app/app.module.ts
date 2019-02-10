@@ -26,6 +26,7 @@ import { CourseComponent } from './course/course.component';
 import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 import { SafeUrlPipe } from './safe-url.pipe';
 import { MessagesComponent } from './messages/messages.component';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { MessagesComponent } from './messages/messages.component';
     CourseComponent,
     LessonDetailComponent,
     SafeUrlPipe,
-    MessagesComponent
+    MessagesComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,7 @@ import { MessagesComponent } from './messages/messages.component';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule,
-    RouterModule.forRoot(routerConfig,{ enableTracing: true }),
+    RouterModule.forRoot(routerConfig,{ enableTracing: false }),
     HttpClientModule
   ],
   providers: [],

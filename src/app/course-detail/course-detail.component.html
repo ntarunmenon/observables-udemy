@@ -4,6 +4,6 @@
 
     <lessons-list [lessons]="lessons$ | async"></lessons-list>
 
-    <div *ngIf="! lessons">Loading ...</div>
+    <div *ngIf="!(lessons$ | async)">Loading ...</div>
 
 </div>

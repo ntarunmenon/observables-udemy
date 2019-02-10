@@ -3,7 +3,7 @@ import { Course } from '../shared/model/course';
 import { Lesson } from '../shared/model/lesson';
 import { ActivatedRoute } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/database';
-import { map, switchMap } from 'rxjs/operators';
+import { map, switchMap, tap, flatMap } from 'rxjs/operators';
 import { CoursesService } from '../services/courses.service';
 import { NewsletterService } from '../services/newsletter.service';
 import { UserService } from '../services/user.service';
@@ -23,8 +23,13 @@ export class CourseDetailComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('inside here');
-    this.course$ = this.route.data.pipe(map(data => data['detail'][0]));
+     const observableD:Observable<[Course, (Lesson[])]> = this.route.snapshot.data["detail"];
+    this.course$ = observableD.pipe(
+      map(data => data[0])
+    );
 
-    this.lessons$ = this.route.data.pipe(map(data => data['detail'][1]));
+    this.lessons$ = observableD.pipe(
+      map(data => data[1])
+    );
   }
 }
